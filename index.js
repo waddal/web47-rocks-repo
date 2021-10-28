@@ -1,4 +1,7 @@
+require('dotenv').config() //injects directly into index
+
 const express = require('express');
+
 const app = express();
 
 const PORT = process.env.PORT || 5000;
@@ -8,6 +11,10 @@ app.get('/', (req, res) => {
     <h1>You Paper!</h1>
     `)
 });
+
+app.get('/port', (req, res) => {
+    res.send(`<div>port is "${process.env.PORT}"</div>`)
+})
 
 app.listen(PORT, () => {
     console.log(`listening on ${PORT}`)

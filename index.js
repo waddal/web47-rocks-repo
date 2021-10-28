@@ -1,6 +1,6 @@
 require('dotenv').config() //injects directly into index
 
-const express = require('express');
+const express = require('express'); //eslint-disable-line
 
 const app = express();
 
@@ -8,7 +8,7 @@ const PORT = process.env.PORT || 5000;
 
 app.get('/', (req, res) => {
     res.send(`
-    <h1>You Paper!</h1>
+    <h1>Cohort ${process.env.COHORT} You Paper!</h1>
     `)
 });
 

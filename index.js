@@ -1,31 +1,21 @@
-require('dotenv').config() //injects directly into index
-const path = require('path')
+require('dotenv').config(); //injects directly into index
+const path = require('path');
 const express = require('express'); //eslint-disable-line
 
 const app = express();
 
-app.use(express.json())
-app.use(express.static(path.join(__dirname, 'client/build'))) //absolute path to the build folder 
+app.use(express.json());
+app.use(express.static(path.join(__dirname, 'client/build'))); //absolute path to the build folder 
 
 const PORT = process.env.PORT || 5000;
 
-// app.get('/', (req, res) => {
-//     res.send(`
-//     <h1>Cohort ${process.env.COHORT} You Paper!</h1>
-//     `)
-// });
-
-// app.get('/port', (req, res) => {
-//     res.send(`<div>port is "${process.env.PORT}"</div>`)
-// })
-
 app.get('/api/foo', (req, res)=> {
     res.json({ message: 'hello there!'})
-})
+});
 
 app.get('*', (req, res) => {
     res.sendFile(path.join(__dirname, 'client/build', 'index.html'))
-})
+});
 
 app.listen(PORT, () => {
     console.log(`listening on ${PORT}`)
